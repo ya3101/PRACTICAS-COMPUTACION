@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Correo Electrónico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Verificador de Correo Electrónico</h2>
+    <label for="correo">Ingrese una cadena de texto:</label>
+    <input type="text" id="correo" placeholder="Ejemplo: usuario@dominio.com">
+    <br>
+    <button onclick="verificarCorreo()">Verificar</button>
+    <div id="resultado"></div>
+
+    <script>
+        function verificarCorreo() {
+            var inputCorreo = document.getElementById('correo').value;
+            var resultado = document.getElementById('resultado');
+
+            if (esCorreoElectronico(inputCorreo)) {
+                resultado.textContent = 'La cadena es un correo electrónico válido.';
+            } else {
+                resultado.textContent = 'La cadena no es un correo electrónico válido.';
+            }
+        }
+
+        function esCorreoElectronico(cadena) {
+            // Verificar si contiene el carácter '@'
+            if (!cadena.includes('@')) {
+                return false;
+            }
+
+            // Verificar las terminaciones permitidas
+            if (cadena.endsWith('.com') || cadena.endsWith('.com.mx') || cadena.endsWith('.mx')) {
+                return true;
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>
