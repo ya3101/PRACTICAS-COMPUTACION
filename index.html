@@ -23,6 +23,50 @@
 
         #resultado {
             margin-top: 20px;
+            PRACTICA #3..........................................................................................
+            <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparación de Números</title>
+</head>
+<body>
+
+    <h1>Programa de Comparación de Números</h1>
+
+    <form>
+        <label for="cantidadNumeros">Ingresa la cantidad de números:</label>
+        <input type="number" id="cantidadNumeros" name="cantidadNumeros" required>
+
+        <p>Ingresa la lista de números:</p>
+        <textarea id="listaNumeros" name="listaNumeros" rows="4" cols="50" required></textarea>
+
+        <label for="valorReferencia">Ingresa el valor de referencia (x):</label>
+        <input type="number" id="valorReferencia" name="valorReferencia" required>
+
+        <button type="button" onclick="realizarComparacion()">Realizar Comparación</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        function realizarComparacion() {
+            var cantidadNumeros = parseInt(document.getElementById('cantidadNumeros').value);
+            var listaNumeros = document.getElementById('listaNumeros').value.split('\n').map(Number);
+            var valorReferencia = parseFloat(document.getElementById('valorReferencia').value);
+
+            var mayoresQueReferencia = listaNumeros.filter(function(numero) {
+                return numero > valorReferencia;
+            }).length;
+
+            document.getElementById('resultado').innerHTML = "De la lista, " + mayoresQueReferencia + " valores son mayores a " + valorReferencia + ".";
+        }
+    </script>
+
+</body>
+</html>
+
         }
     </style>
 </head>
@@ -106,5 +150,302 @@
   document.write('</table>');
 </script>
 
+</body>
+</html>
+
+PRACTICA 4 ......................................................................................................
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparación con Promedio</title>
+</head>
+<body>
+
+    <h1>Programa de Comparación con Promedio</h1>
+
+    <script>
+        function compararConPromedio() {
+            var cantidadDatos = parseInt(prompt("Ingrese la cantidad de datos:"));
+            var datos = [];
+            var suma = 0;
+
+            // Pedir al usuario que ingrese los datos
+            for (var i = 0; i < cantidadDatos; i++) {
+                var dato = parseFloat(prompt("Ingrese el dato " + (i + 1) + ":"));
+                datos.push(dato);
+                suma += dato;
+            }
+
+            // Calcular el promedio
+            var promedio = suma / cantidadDatos;
+
+            // Contar cuántos datos son mayores que el promedio
+            var mayoresQuePromedio = datos.filter(function(dato) {
+                return dato > promedio;
+            }).length;
+
+            // Mostrar el resultado
+            alert("El promedio es: " + promedio.toFixed(2) + "\nDe los datos ingresados, " + mayoresQuePromedio + " son mayores que el promedio.");
+        }
+    </script>
+
+    <button onclick="compararConPromedio()">Iniciar Programa</button>
+
+</body>
+</html>
+
+PRACTICA 5................................................................................................................................
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto Interno y Ortogonalidad</title>
+</head>
+<body>
+
+    <h1>Programa de Producto Interno y Ortogonalidad</h1>
+
+    <script>
+        function calcularProductoInterno() {
+            // Ingresar el vector a
+            var vectorA = [];
+            var aLength = parseInt(prompt("Ingrese la longitud del vector a:"));
+            for (var i = 0; i < aLength; i++) {
+                var valor = parseFloat(prompt("Ingrese el valor para a[" + i + "]:"));
+                vectorA.push(valor);
+            }
+            alert("a: [" + vectorA.join(', ') + "]");
+
+            // Ingresar el vector b
+            var vectorB = [];
+            var bLength = parseInt(prompt("Ingrese la longitud del vector b:"));
+            for (var j = 0; j < bLength; j++) {
+                var valor = parseFloat(prompt("Ingrese el valor para b[" + j + "]:"));
+                vectorB.push(valor);
+            }
+            alert("b: [" + vectorB.join(', ') + "]");
+
+            // Calcular el producto interno
+            var productoInterno = 0;
+            for (var k = 0; k < Math.min(aLength, bLength); k++) {
+                productoInterno += vectorA[k] * vectorB[k];
+            }
+
+            alert("Producto interno entre a y b: " + productoInterno);
+
+            // Verificar ortogonalidad
+            var esOrtogonal = productoInterno === 0;
+            alert("a y b " + (esOrtogonal ? "son" : "no son") + " ortogonales");
+        }
+    </script>
+
+    <button onclick="calcularProductoInterno()">Ejecutar Programa</button>
+
+</body>
+</html>
+
+
+PRACTICA 7.......................................................................................................................
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación de Arreglo Cuadrado</title>
+    <script>
+        function verificarArreglo() {
+            // Obtener el tamaño n
+            var n = parseInt(document.getElementById('tamano').value);
+            
+            // Obtener la matriz ingresada
+            var matriz = [];
+            for (var i = 0; i < n; i++) {
+                matriz[i] = [];
+                for (var j = 0; j < n; j++) {
+                    matriz[i][j] = parseInt(document.getElementById('elemento_' + i + '_' + j).value);
+                }
+            }
+
+            // Verificar si los elementos son consecutivos
+            var elementosConsecutivos = true;
+            var contador = 1;
+            for (var i = 0; i < n; i++) {
+                for (var j = 0; j < n; j++) {
+                    if (matriz[i][j] !== contador) {
+                        elementosConsecutivos = false;
+                        break;
+                    }
+                    contador++;
+                }
+                if (!elementosConsecutivos) {
+                    break;
+                }
+            }
+
+            // Mostrar resultados
+            if (elementosConsecutivos) {
+                document.getElementById('resultado').innerHTML = "El arreglo tiene números consecutivos.";
+            } else {
+                document.getElementById('resultado').innerHTML = "El arreglo no tiene números consecutivos.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Verificación de Arreglo Cuadrado</h1>
+    <label for="tamano">Inserta el tamaño n:</label>
+    <input type="number" id="tamano">
+    <br>
+
+    <!-- Inputs para ingresar la matriz -->
+    <p>Ingrese los elementos de la matriz:</p>
+    <table>
+        <tbody id="matrizInputs"></tbody>
+    </table>
+    
+    <button onclick="verificarArreglo()">Verificar</button>
+    
+    <!-- Mostrar resultado -->
+    <p id="resultado"></p>
+
+    <script>
+        // Crear inputs para la matriz
+        function crearInputsMatriz() {
+            var n = parseInt(document.getElementById('tamano').value);
+            var matrizInputsHtml = "";
+
+            for (var i = 0; i < n; i++) {
+                matrizInputsHtml += "<tr>";
+                for (var j = 0; j < n; j++) {
+                    matrizInputsHtml += "<td><input type='number' id='elemento_" + i + "_" + j + "'></td>";
+                }
+                matrizInputsHtml += "</tr>";
+            }
+
+            document.getElementById('matrizInputs').innerHTML = matrizInputsHtml;
+        }
+
+        // Actualizar inputs de la matriz cuando cambia el tamaño
+        document.getElementById('tamano').addEventListener('input', function() {
+            crearInputsMatriz();
+        });
+    </script>
+</body>
+</html>
+
+PRACTICA 8..................................................................................................
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Campeonato de Fútbol</title>
+    <script>
+        function simularCampeonato() {
+            // Obtener los nombres de los equipos
+            var equipos = [];
+            for (var i = 1; i <= 8; i++) {
+                var equipo = prompt("Ingrese el nombre del Equipo " + i + ":");
+                equipos.push(equipo);
+            }
+
+            // Simulación del campeonato
+            while (equipos.length > 1) {
+                var rondaActual = [];
+
+                for (var i = 0; i < equipos.length; i += 2) {
+                    var equipo1 = equipos[i];
+                    var equipo2 = equipos[i + 1];
+
+                    var ganador = prompt("a. " + equipo1 + " - b. " + equipo2 + ":");
+                    rondaActual.push(ganador);
+                }
+
+                equipos = rondaActual;
+            }
+
+            // Mostrar al campeón
+            alert("El campeón es: " + equipos[0]);
+        }
+    </script>
+</head>
+<body>
+    <h1>Simulador de Campeonato de Fútbol</h1>
+    <button onclick="simularCampeonato()">Iniciar Campeonato</button>
+</body>
+</html>
+
+PRACTICA 9.....................................................................................................................
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Sudoku</title>
+    <script>
+        function verificarSudoku() {
+            // Obtener el sudoku desde el textarea
+            var sudoku = document.getElementById('sudokuInput').value;
+
+            // Convertir la cadena en una matriz 9x9
+            var sudokuMatrix = sudoku.split('\n').map(row => row.split(',').map(Number));
+
+            // Llamar a la función que verifica la solución
+            var esCorrecto = esSudokuCorrecto(sudokuMatrix);
+
+            // Mostrar el resultado en la página
+            var resultadoElement = document.getElementById('resultado');
+            resultadoElement.textContent = esCorrecto ? 'La solución es correcta.' : 'La solución es incorrecta.';
+        }
+
+        function esSudokuCorrecto(sudoku) {
+            // Verificar filas
+            for (var fila of sudoku) {
+                if (new Set(fila).size !== 9) {
+                    return false;
+                }
+            }
+
+            // Verificar columnas
+            for (var i = 0; i < 9; i++) {
+                var columna = sudoku.map(fila => fila[i]);
+                if (new Set(columna).size !== 9) {
+                    return false;
+                }
+            }
+
+            // Verificar regiones
+            for (var i = 0; i < 9; i += 3) {
+                for (var j = 0; j < 9; j += 3) {
+                    var region = [];
+                    for (var k = i; k < i + 3; k++) {
+                        for (var l = j; l < j + 3; l++) {
+                            region.push(sudoku[k][l]);
+                        }
+                    }
+                    if (new Set(region).size !== 9) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Verificador de Sudoku</h1>
+    <textarea id="sudokuInput" placeholder="Ingrese el sudoku resuelto (9x9) aquí..."></textarea>
+    <br>
+    <button onclick="verificarSudoku()">Verificar Solución</button>
+    <p id="resultado"></p>
 </body>
 </html>
