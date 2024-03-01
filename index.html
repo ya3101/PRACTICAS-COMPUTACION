@@ -21,7 +21,6 @@ def prop7(a, b, c):
 
 def prop8(a):
     return 1 * a == a
-
 # Ejemplo de uso
 a = 2
 b = 3
@@ -35,4 +34,155 @@ print("Propiedad 5:", prop5(a, b))
 print("Propiedad 6:", prop6(a, b, c))
 print("Propiedad 7:", prop7(a, b, c))
 print("Propiedad 8:", prop8(a))
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+import numpy as np
+
+# Definir los vectores
+vector1 = np.array([1, 2, 3])
+vector2 = np.array([4, 5, 6])
+
+# Verificar la propiedad de conmutatividad de la suma para vectores
+resultado1 = vector1 + vector2
+resultado2 = vector2 + vector1
+
+print("¿Es verdad que vector1 + vector2 es igual a vector2 + vector1?")
+print(resultado1 == resultado2)
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+import numpy as np
+
+# Definimos los vectores
+vector_u = np.array([1, 2])
+vector_v = np.array([[4, 5], [1, 0]])
+
+# Realizamos la suma según la propiedad de asociatividad
+resultado1 = vector_u + (vector_v[0] + vector_v[1])
+resultado2 = (vector_u + vector_v[0]) + vector_v[1]
+
+# Comparamos los resultados
+igualdad = np.array_equal(resultado1, resultado2)
+
+print("¿Es verdad que la suma es igual independientemente del agrupamiento?")
+print(igualdad)
+
+----------------------------------------------------------------------------------------------------------------------------
+
+import numpy as np
+
+# Definir los vectores
+vector_exterior = np.array([4, 5, 6])
+vector_interior = np.array([0, 0, 0])
+
+# Realizar la suma según la expresión dada
+resultado = vector_interior + vector_exterior
+
+# Verificar si el resultado es igual al vector exterior
+es_cierto = np.array_equal(resultado, vector_exterior)
+
+print("¿Es verdad que el resultado es igual al vector exterior?")
+print(es_cierto)
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+import numpy as np
+
+# Definir los vectores
+vector1 = np.array([4, 5, 6])
+vector2 = np.array([-4, -5, -6])
+
+# Realizar la suma
+resultado = vector1 + vector2
+
+# Verificar si el resultado es un vector nulo
+es_cero = np.all(resultado == 0)
+
+print("¿Es verdad que la suma resulta en un vector nulo?")
+print(es_cero)
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+import numpy as np
+
+# Definir los vectores
+vector1 = np.array([[3, -2], [6, 7]])  # Primer vector
+vector2 = np.array([5, 3])             # Segundo vector
+
+# Realizar la operación según la afirmación
+resultado_izquierda = 3 * (vector1 + vector2)
+resultado_derecha = 3 * vector1 + 3 * vector2
+
+# Verificar si los resultados son iguales
+es_igual = np.array_equal(resultado_izquierda, resultado_derecha)
+
+print("¿Es verdad que la afirmación es cierta para los vectores dados?")
+print(es_igual)
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+import numpy as np
+
+# Definir el escalar y el vector
+escalar = 2 + 3  # Podemos cambiar este número si es necesario
+vector = np.array([1, 2, 3])
+
+# Realizar las operaciones
+resultado_izquierda = escalar * vector
+resultado_derecha = 2 * vector + 3 * vector
+
+# Verificar si los resultados son iguales
+es_igual = np.array_equal(resultado_izquierda, resultado_derecha)
+
+print("¿Es verdad que la afirmación es cierta para el escalar y vector dados?")
+print(es_igual)
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+import numpy as np
+
+# Definir los escalares y el vector
+escalar1 = 2  # Cambia este número si es necesario
+escalar2 = 3  # Cambia este número si es necesario
+vector = np.array([3, 1, 2])
+
+# Realizar las operaciones
+resultado_izquierda = escalar1 * vector
+resultado_derecha = (escalar1 * escalar2) * vector
+
+# Verificar si los resultados son iguales
+es_igual = np.array_equal(resultado_izquierda, resultado_derecha)
+
+print("¿Es verdad que la afirmación es cierta para los escalares y el vector dados?")
+print(es_igual)
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+import numpy as np
+
+# Definir el escalar y el vector
+a = 3  # Cambia este número si es necesario
+vector = np.array([2, 4, 6])  # Cambia estos números si es necesario
+
+# Realizar la operación
+resultado_izquierda = a * vector
+resultado_derecha = vector
+
+# Verificar si los resultados son iguales
+es_igual = np.array_equal(resultado_izquierda, resultado_derecha)
+
+print("¿Es verdad que la afirmación es cierta para el escalar y el vector dados?")
+print(es_igual)
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
 
