@@ -1,1 +1,38 @@
+def prop1(a, b):
+    return a + b == b + a
+
+def prop2(a, b, c):
+    return a + (b + c) == (a + b) + c
+
+def prop3(a):
+    return a + 0 == a
+
+def prop4(a):
+    return a + (-a) == 0
+
+def prop5(a, b):
+    return a * b == b * a
+
+def prop6(a, b, c):
+    return a * (b + c) == a * b + a * c
+
+def prop7(a, b, c):
+    return a * (b * c) == (a * b) * c
+
+def prop8(a):
+    return 1 * a == a
+
+# Ejemplo de uso
+a = 2
+b = 3
+c = 4
+
+print("Propiedad 1:", prop1(a, b))
+print("Propiedad 2:", prop2(a, b, c))
+print("Propiedad 3:", prop3(a))
+print("Propiedad 4:", prop4(a))
+print("Propiedad 5:", prop5(a, b))
+print("Propiedad 6:", prop6(a, b, c))
+print("Propiedad 7:", prop7(a, b, c))
+print("Propiedad 8:", prop8(a))
 
